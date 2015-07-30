@@ -1,0 +1,82 @@
+<!-- used both in front-end and back-end versions -->
+<div class="container vertical-center">
+    <div class="row">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>Algas kalkulators</legend>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <label class="control-label">BRUTO alga (mēnesī) EUR</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control"
+                               type="text"
+                               name="bruto"
+                               data-ng-model="bruto"
+                               data-ng-change="update(250)"
+                               data-numeric-binding />
+                    </div>
+                </div>
+
+                <div class="row margin-top-small">
+                    <div class="col-md-8">
+                        <label class="control-label">Apgādājamo personu skaits</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control"
+                               type="number"
+                               min="0"
+                               name="persons"
+                               data-ng-model="persons"
+                               data-ng-change="update(100)"
+                               data-only-digits />
+                    </div>
+                </div>
+
+                <div class="row margin-top-large">
+                    <div class="col-md-8">
+                        <label class="control-label">NETO alga (mēnesī)</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control"
+                               type="text"
+                               name="neto"
+                               value="{{ getNeto() | currency : '' : 2 }}"
+                               readonly="readonly" />
+                    </div>
+                </div>
+
+                <div class="row margin-top-small">
+                    <div class="col-md-8">
+                        <label class="control-label">
+                            Darba devēja pilnās izmaksas
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control"
+                               type="text"
+                               name="employerFullPayment"
+                               value="{{ getEmployerFullPayment() | currency : '' : 2 }}"
+                               readonly="readonly" />
+                    </div>
+                </div>
+
+                <div class="row margin-top-large">
+                    <div class="col-md-8">
+                        <label class="control-label">Rēķināt kādā valūtā</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control"
+                                name="currency"
+                                data-ng-model="currency"
+                                data-ng-options="currency.name for currency in currencies"
+                                data-ng-change="update(0)">
+                        </select>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
